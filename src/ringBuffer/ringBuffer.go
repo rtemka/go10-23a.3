@@ -97,6 +97,7 @@ func (r *RingBuffer) Write(v int) error {
 // Print prints buffer contents to console
 func (r *RingBuffer) Print() {
 	if r.IsEmpty() {
+		fmt.Println("buffer is empty")
 		return
 	}
 

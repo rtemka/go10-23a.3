@@ -3,6 +3,7 @@ package consoleReader
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 )
@@ -26,20 +27,28 @@ func scanConsole() <-chan int {
 
 		defer close(out)
 
+		log.Println("Start reading STDIN")
+		fmt.Println("Usage: enter number and press Enter (only numbers will be accepted)")
+		fmt.Println("To exit type 'exit' and press enter")
+
 		scanner := bufio.NewScanner(os.Stdin)
 		for scanner.Scan() {
 
 			t := scanner.Text()
 
 			if t == "exit" {
+				log.Println("\nexit reading STDIN")
 				break
 			}
 
 			// accepts integers only
 			i, err := strconv.Atoi(t)
 			if err != nil {
+				fmt.Println("\nonly numbers are accepted")
 				continue
 			}
+
+			log.Printf("\nGot data from STDIN: %d\n", i)
 			out <- i
 		}
 

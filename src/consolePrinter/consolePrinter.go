@@ -1,5 +1,7 @@
 package consolePrinter
 
+import "log"
+
 // ConsumerAdapter wraps channel processing function
 type ConsumerAdapter func(<-chan int)
 
@@ -12,6 +14,7 @@ func NewConsolePrinter() ConsumerAdapter {
 }
 
 func print(in <-chan int) {
-	for range in {
+	for i := range in {
+		log.Printf("\nData received: %d\n", i)
 	}
 }
