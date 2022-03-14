@@ -36,14 +36,14 @@ func (p *IntProcessor) Filter(done <-chan struct{}, in <-chan int) <-chan int {
 				}
 				// filtering logic
 				if v, ok := p.filter(i); ok {
-					log.Printf("\nWorker #%d -> Processed value: %d -> Result: Passed\n", p.id, v)
+					log.Printf("Worker #%d -> Processed value: %d -> Result: Passed\n", p.id, v)
 					select {
 					case out <- v:
 					case <-done:
 						return
 					}
 				} else {
-					log.Printf("\nWorker #%d -> Processed value: %d -> Result: Filtered out\n", p.id, v)
+					log.Printf("Worker #%d -> Processed value: %d -> Result: Filtered out\n", p.id, v)
 				}
 			}
 		}
@@ -53,5 +53,5 @@ func (p *IntProcessor) Filter(done <-chan struct{}, in <-chan int) <-chan int {
 }
 
 func (p *IntProcessor) stopMsg() {
-	log.Printf("\nWorker #%d -> stoped\n", p.id)
+	log.Printf("Worker #%d -> stoped\n", p.id)
 }

@@ -37,7 +37,7 @@ func scanConsole() <-chan int {
 			t := scanner.Text()
 
 			if t == "exit" {
-				log.Println("\nexit reading STDIN")
+				log.Println("exit reading STDIN")
 				break
 			}
 
@@ -48,7 +48,7 @@ func scanConsole() <-chan int {
 				continue
 			}
 
-			log.Printf("\nGot data from STDIN: %d\n", i)
+			log.Printf("Got data from STDIN: %d\n", i)
 			out <- i
 		}
 

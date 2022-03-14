@@ -76,7 +76,7 @@ func (bc *bufferController) manageBuffer(done <-chan struct{}, in <-chan int) <-
 			}
 			out <- el
 		}
-		log.Println("\nbuffer has been flushed")
+		log.Println("buffer has been flushed")
 	}
 
 	go func() {
@@ -110,7 +110,7 @@ func (bc *bufferController) manageBuffer(done <-chan struct{}, in <-chan int) <-
 				if err != nil {
 					fmt.Println(err)
 				}
-				log.Println("\nwritten to the buffer", v)
+				log.Println("written to the buffer", v)
 			case <-time.After(bc.flushInterval):
 				flush()
 			}
